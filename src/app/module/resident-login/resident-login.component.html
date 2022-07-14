@@ -1,0 +1,24 @@
+<div class="box" >
+  <mat-card class="setting-card">
+    <mat-card-content class="setting-card-content" fxLayout="column" fxLayoutAlign="space-around center">
+      <form class="setting-form" fxLayout="column" fxLayoutAlign="canter center" [formGroup]="formLogin">
+        <h2>Welcome Resident</h2>
+        <mat-form-field class="setting-input" appearance="fill">
+          <input matInput placeholder="Email" required
+                 type="email" formControlName="username">
+          <mat-error>
+            Please provide a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="setting-input" appearance="fill">
+          <input matInput type="password" required
+                 placeholder="Password" formControlName="password" >
+          <mat-error>
+            Please provide a valid password
+          </mat-error>
+        </mat-form-field>
+        <button class="setting-button" mat-raised-button color="primary"> Login </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,38 @@
+:host {
+  height: 100%;
+  width: 100%;
+
+  .box {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255,255,255, 0.3);
+
+  }
+
+  .setting-card {
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+
+    .setting-card-content {
+      padding: 77px 50px 30px 50px;
+      height: 100%;
+      .setting-form {
+        height: 100%;
+        width: 100%;
+        .setting-input {
+          width: 100%;
+          padding: 6px 0px 6px 0px;
+        }
+        .setting-button {
+          width: 100%;
+          padding: 6px 0px 6px 0px;
+          margin: 6px 0px 6px 0px;
+
+        }
+      }
+    }
+
+
+  }
+}
