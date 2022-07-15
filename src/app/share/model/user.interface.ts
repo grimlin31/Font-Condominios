@@ -1,7 +1,11 @@
 export interface UserInterface {
-  _id: String,
-  username: String,
-  password: String,
-  email?: String,
-  name: String,
+  _id: string,
+  username: string,
+  password: string,
+  email?: string,
+  name: string,
+
+  // typeuser
+  isAdmin?: boolean,
+  actions?: string,
 }

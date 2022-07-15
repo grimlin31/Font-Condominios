@@ -25,7 +25,7 @@ export class AdminLoginComponent implements OnInit {
   }
 
   public loginSubmit(): void {
-    this._route.navigate(['admin', this.username], {
+    this._route.navigate(['admin', this.username, 'resident'], {
       state: {
         password: this.password,
       }

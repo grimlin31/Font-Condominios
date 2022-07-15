@@ -1,18 +1,1 @@
-<div class="main">
-  <h3>Todo List</h3>
-  <div *ngIf="error">
-    <p>Error: {{ error }}</p>
-  </div>
 
-  <form class="form" [formGroup]="residentForm" (ngSubmit)="addResident()">
-    <input class="input" type="text" name="id" placeholder="id" formControlName="_id"/>
-    <br />
-    <input class="input" type="text" name="name" placeholder="Enter todo" formControlName="name"/>
-    <br />
-    <input class="input" type="text" name="username"  placeholder="User Name"  formControlName="username"/>
-    <br />
-    <input class="input" type="text" name="password"  placeholder="Password"  formControlName="password"/>
-    <br />
-    <button class="submit-button" [disabled]="residentForm.invalid">SUBMIT</button>
-  </form>
-</div>

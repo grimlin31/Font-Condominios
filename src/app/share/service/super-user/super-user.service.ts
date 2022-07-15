@@ -3,7 +3,7 @@ import { Apollo } from "apollo-angular";
 import { UserInterface } from "../../model/user.interface";
 import { ADD_SUPER_USER } from "./super-user.mutate";
 import { catchError, map, Observable } from "rxjs";
-import { AUTH_SUPER_USER } from "./super-user.query";
+import { AUTH_SUPER_USER, GET_BY_USERMANE } from "./super-user.query";
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +42,21 @@ export class SuperUserService {
     }).valueChanges.pipe(
       map(({data}: any) => {
         return data.authSuperUser;
+      })
+    )
+  }
+
+  public getByUsername(
+    username: String,
+  ): Observable<Partial<UserInterface>> {
+    return this._apollo.watchQuery({
+      query: GET_BY_USERMANE,
+      variables: {
+        username,
+      }
+    }).valueChanges.pipe(
+      map(({data}: any) => {
+        return data.findSuperUserByUsername;
       })
     )
   }

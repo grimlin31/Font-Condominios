@@ -6,6 +6,7 @@ const GET_ALL_RESIDENT = gql`
       _id
       name
       username
+      email
     }
   }
 `

@@ -1,0 +1,30 @@
+<div fxLayout="column" fxLayoutAlign="center center" >
+  <h1 mat-dialog-title>{{data.title}}</h1>
+  <div mat-dialog-content *ngIf="data.type?.delete">{{data?.message}}</div>
+  <div mat-dialog-content *ngIf="!data.type?.delete">
+    <form [formGroup]="formResident" fxLayout="column" fxLayoutAlign="space-around stretch" >
+      <mat-form-field appearance="fill">
+        <mat-label>Enter resident email</mat-label>
+        <input matInput placeholder="example@example.com" formControlName="email" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter resident name</mat-label>
+        <input matInput placeholder="example@example.com" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter resident username</mat-label>
+        <input matInput placeholder="example@example.com" formControlName="username" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter resident password</mat-label>
+        <input matInput placeholder="example@example.com" formControlName="password" required>
+      </mat-form-field>
+    </form>
+
+
+  </div>
+  <mat-dialog-actions class="buttons-section" fxLayout="row" fxLayoutAlign="space-around center">
+    <button class="mat-raised-button"(click)="close()">Cancel</button>
+    <button class="mat-raised-button"(click)="accept()">Accept</button>
+  </mat-dialog-actions>
+</div>

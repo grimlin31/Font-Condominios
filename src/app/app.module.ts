@@ -19,6 +19,13 @@ import { AdminLoginComponent } from './module/admin/admin-login/admin-login.comp
 import { AdminGuard } from "./share/guards/admin.guard";
 import { ResidentLoginComponent } from "./module/resident-login/resident-login.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { DialogComponent } from './share/feature/dialog/dialog.component';
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { DialogFormComponent } from './share/feature/dialog-form/dialog-form.component';
+import { AdminHousesComponent } from './module/admin/admin-houses/admin-houses.component';
+import { MatMenuModule } from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -27,6 +34,9 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     AdminLoginComponent,
     ResidentLoginComponent,
     routingComponent,
+    DialogComponent,
+    DialogFormComponent,
+    AdminHousesComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,9 +53,17 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     MatIconModule,
     MatButtonModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatMenuModule
   ],
   providers: [AdminGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogComponent,
+    DialogFormComponent
+  ]
 })
 export class AppModule { }

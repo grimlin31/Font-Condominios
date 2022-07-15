@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-resident-login',
@@ -12,9 +13,23 @@ export class ResidentLoginComponent implements OnInit {
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   })
-  constructor() { }
+
+  get username() {return this.formLogin.get('username')?.value}
+  get password() {return this.formLogin.get('password')?.value}
+
+  constructor(
+    private _router: Router,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  public loginSubmit(): void {
+    this._router.navigate(['resident', this.username], {
+      state: {
+        password: this.password,
+      }
+    })
   }
 
 }

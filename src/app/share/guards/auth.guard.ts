@@ -4,13 +4,14 @@ import { map, Observable, of } from 'rxjs';
 import { SuperUserService } from "../service/super-user/super-user.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { DialogComponent } from "../feature/dialog/dialog.component";
+import { ResidentService } from "../service/resident/resident.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   constructor(
-    private _adminService: SuperUserService,
+    private _residentService: ResidentService,
     private _router: Router,
     private _dialog: MatDialog,
   ) {
@@ -31,7 +32,7 @@ export class AdminGuard implements CanActivate {
       return of(false)
     };
 
-    return this._adminService.authSuperUser(username, routeState?.password)
+    return this._residentService.authenticate(username, routeState?.password)
       .pipe(
         map((isSuperUser => {
           if (isSuperUser) return isSuperUser;
@@ -62,3 +63,4 @@ export class AdminGuard implements CanActivate {
   }
 
 }
+
