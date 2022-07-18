@@ -5,7 +5,6 @@ import { AppRoutingModule, routingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ProfileComponent } from './module/profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from "@angular/material/card";
@@ -24,19 +23,23 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { DialogFormComponent } from './share/feature/dialog-form/dialog-form.component';
-import { AdminHousesComponent } from './module/admin/admin-houses/admin-houses.component';
 import { MatMenuModule } from "@angular/material/menu";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { DialogHouseComponent } from './share/feature/dialog-house/dialog-house.component';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatChipsModule } from "@angular/material/chips";
+import { DialogPaymentComponent } from './share/feature/dialog-payment/dialog-payment.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent,
     AdminLoginComponent,
     ResidentLoginComponent,
     routingComponent,
     DialogComponent,
     DialogFormComponent,
-    AdminHousesComponent,
+    DialogHouseComponent,
+    DialogPaymentComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,10 @@ import { MatMenuModule } from "@angular/material/menu";
     MatDialogModule,
     MatTableModule,
     MatPaginatorModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule,
+    MatProgressSpinnerModule,
+    MatChipsModule
   ],
   providers: [AdminGuard],
   bootstrap: [AppComponent],

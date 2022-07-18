@@ -1,11 +1,15 @@
 export interface TransactionInterface {
-  _id: String
-  houseId: String,
-  detail: String,
-  reason: String,
-  amount: Number,
-  payedAmount: Number,
-  expirationFee: Number,
-  expirationCycle: String,
+  _id: string
+  houseId: string,
+  detail: string,
+  reason: string,
+  amount: number,
+  payedAmount: number,
+  expirationFee: number,
+  expirationCycle: string,
   createdAt: Date
+
+  // local
+  position?: number;
+  actions: number;
 }

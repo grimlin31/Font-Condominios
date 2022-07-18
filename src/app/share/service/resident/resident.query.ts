@@ -17,6 +17,7 @@ const GET_RESIDENT_BY_USERNAME = gql`
       _id
       name
       username
+      email
     }
   }
 `
@@ -27,8 +28,20 @@ const AUTHENTICATION_USER = gql`
   }
 `
 
+const GET_USER_BY_ID = gql`
+  query findOneResident($_id: ID!) {
+    findOneResident(_id: $_id) {
+      _id
+      name
+      username
+      email
+    }
+  }
+`
+
 export {
   GET_ALL_RESIDENT,
   GET_RESIDENT_BY_USERNAME,
-  AUTHENTICATION_USER
+  AUTHENTICATION_USER,
+  GET_USER_BY_ID
 }

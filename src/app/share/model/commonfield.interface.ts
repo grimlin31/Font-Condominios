@@ -1,4 +1,4 @@
-export interface HouseInterface {
+export interface CommonFieldInterface {
   _id: String,
   condominiumId: String,
   name: String,

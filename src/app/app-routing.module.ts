@@ -9,6 +9,7 @@ import { CommonAreasResidentComponent } from "./module/common-areas-resident/com
 import { AdminCommonAreasComponent } from "./module/admin/admin-common-areas/admin-common-areas.component";
 import { AdminHousesComponent } from "./module/admin/admin-houses/admin-houses.component";
 import { ProfileComponent } from "./module/profile/profile.component";
+import { AdminCondominiumComponent } from "./module/admin/admin-condominium/admin-condominium.component";
 
 const routes: Routes = [
   {path: '',  redirectTo: 'login', pathMatch: 'full'},
@@ -23,7 +24,8 @@ const routes: Routes = [
       {path: '', component: AdminHomeComponent},
       {path: 'resident', redirectTo: '', pathMatch: 'full'},
       {path: 'careas', component: AdminCommonAreasComponent},
-      {path: 'houses', component: AdminHousesComponent},
+      {path: 'condom', component: AdminCondominiumComponent},
+      {path:'condom/:condom_id', component: AdminHousesComponent},
       {path: '**', redirectTo: ''}
     ]},
   {path:'**', redirectTo: 'login'}
@@ -41,5 +43,6 @@ export const routingComponent = [
   CommonAreasResidentComponent,
   AdminCommonAreasComponent,
   ProfileComponent,
-  AdminHousesComponent
+  AdminHousesComponent,
+  AdminCondominiumComponent
 ]

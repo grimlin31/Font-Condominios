@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { UserInterface } from "../../../share/model/user.interface";
 import { ResidentService } from "../../../share/service/resident/resident.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { DialogDataInterface } from "../../../share/model/dialog-data.interface";
 import { DialogFormComponent } from "../../../share/feature/dialog-form/dialog-form.component";
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
+import { switchMap } from "rxjs";
 
 @Component({
   selector: 'app-admin-home',
   templateUrl: './admin-home.component.html',
-  styleUrls: ['./admin-home.component.scss']
+  styleUrls: ['./admin-home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminHomeComponent implements OnInit {
 
@@ -24,6 +26,7 @@ export class AdminHomeComponent implements OnInit {
     private _route: ActivatedRoute,
     private _residentService: ResidentService,
     private _dialog: MatDialog,
+    private _cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
@@ -36,10 +39,6 @@ export class AdminHomeComponent implements OnInit {
     this.getData();
   }
 
-  public printData(value: any) {
-    console.log(value)
-  }
-
   public addNewResident() {
     const dialog = this.openDialog({
       title: 'New Resident',
@@ -50,10 +49,12 @@ export class AdminHomeComponent implements OnInit {
       (value)=> {
         if( value) {
           this._residentService.addResident({...value}).subscribe(
-            (value) => {
-              this.getData()
-            }
-          )
+              (user) => {
+                this._residentService.resetQueryRef(
+                  this._residentService.qrGetAllResident
+                )
+              }
+            )
         }
 
       }
@@ -74,7 +75,9 @@ export class AdminHomeComponent implements OnInit {
         if (canDelete) {
           this._residentService.deleteResident(element._id).subscribe(
             (value) => {
-              this.getData();
+              this._residentService.resetQueryRef(
+                this._residentService.qrGetAllResident
+              )
             }
           );
         }
@@ -95,8 +98,9 @@ export class AdminHomeComponent implements OnInit {
           this._residentService.updateResident(element._id, {...value})
             .subscribe(
               (value) => {
-                this.getData();
-              }
+                this._residentService.resetQueryRef(
+                  this._residentService.qrGetAllResident
+                )              }
             )
         }
       }
@@ -121,9 +125,10 @@ export class AdminHomeComponent implements OnInit {
 
   private getData() {
     this._residentService.getAllResident().subscribe(
-      (value) => {
-        this.residents.data = [...value];
-      },
+      (data) => {
+        this.residents.data = data;
+        this._cdr.markForCheck();
+      }
     )
   }
 }

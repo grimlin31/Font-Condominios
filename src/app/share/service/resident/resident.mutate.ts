@@ -12,14 +12,15 @@ const ADD_RESIDENT = gql`
 `
 
 const UPDATE_RESIDENT = gql`
-  mutation updateResident($id: ID!, $name: String, $username: String, $password: String) {
+  mutation updateResident($id: ID!, $name: String, $username: String, $password: String, $email: String) {
     updateResident(
       _id: $id,
-      input: { name: $name, username: $username, password: $password}
+      input: { name: $name, username: $username, password: $password, email: $email}
     ){
       _id
       name
       username
+      email
     }
   }
 `
@@ -30,6 +31,7 @@ const DELETE_RESIDENT = gql`
       _id
       name
       username
+      email
     }
   }
 `

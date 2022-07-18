@@ -1,7 +1,7 @@
 export interface CommonfundInterface {
-  _id: String
-  houseId: String,
-  amount: Number,
-  detail: String,
-  expirationCycle: String,
+  _id: string
+  houseId: string,
+  amount: number,
+  detail: string,
+  expirationCycle: string,
 }

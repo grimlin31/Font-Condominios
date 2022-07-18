@@ -1,7 +1,7 @@
 export interface PeriodInterface {
-  _id: String,
-  commonfieldId: String,
+  _id: string,
+  commonfieldId: string,
   startDate: Date,
   endDate: Date,
-  reserved: Boolean
+  reserved: boolean
 }

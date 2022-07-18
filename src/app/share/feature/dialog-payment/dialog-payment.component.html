@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutAlign="center center" >
+  <h1 mat-dialog-title>{{data.title}}</h1>
+  <div mat-dialog-content fxLayout="column">
+    <span class="span-settings"> Reason: {{ data?.transaction?.reason || '' }}</span>
+    <div class="span-settings" fxLayout="column">
+      <span> Detail:</span>
+      <span>{{ data?.transaction?.detail || ''}}</span>
+    </div>
+    <div class="span-settings" fxLayout="row" fxLayoutAlign="space-between center">
+      <span> Paid: {{' $'+data?.transaction?.payedAmount || '$0'}}</span>
+      <span> Total: {{' $'+ data?.transaction?.amount || '$0'}}</span>
+    </div>
+    <div *ngIf="data.pay" fxLayout="column" fxLayoutAlign="center center" [formGroup]="form">
+      <mat-form-field appearance="standard">
+        <mat-label>Amount</mat-label>
+        <input matInput [errorStateMatcher]="errorStateMatcher" formControlName="paidAmount" >
+        <mat-icon matPrefix>attach_money</mat-icon>
+        <mat-error *ngIf="!paidAmount?.hasError('required')">Amount can not be more than Total</mat-error>
+        <mat-error *ngIf="paidAmount?.hasError('required')">If you want to pay, please enter an amount</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <mat-dialog-actions class="buttons" fxLayout="row" fxLayoutAlign="space-evenly center">
+    <button mat-raised-button (click)="close()">Cancel</button>
+    <button mat-raised-button color="primary" *ngIf="data.pay" (click)="pay()">Pay</button>
+  </mat-dialog-actions>
+</div>

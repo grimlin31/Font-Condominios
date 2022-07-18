@@ -1,0 +1,21 @@
+:host {
+  height: 100%;
+
+  .table {
+    width: 100%;
+
+  }
+  .position-size {
+    width: 10%;
+    align-content: end;
+  }
+  .action-size {
+    width: 10%;
+  }
+  .name-size {
+    padding-left: 24px;
+  }
+  .box {
+    height: 100%;
+  }
+}

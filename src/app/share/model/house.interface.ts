@@ -1,6 +1,9 @@
 export interface HouseInterface {
-  _id: String,
-  condominiumId: String,
-  residentsId: [String],
-  name: String
+  _id: string,
+  condominiumId: string,
+  residentsId: [string],
+  name: string
+
+  // local
+  position?: number,
 }

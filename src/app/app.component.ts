@@ -35,18 +35,17 @@ export class AppComponent implements OnInit{
           this.username = value.url.split('/')[2]
           if (value.url.includes('admin')) {
             this.buttonArray = [
-              'Houses',
+              'Condominium',
               'Common Areas',
               'Residents'
             ]
-            this.getUserSuper(value)
+            this.getUserSuper()
           }
           else if (value.url.includes('resident')) {
             this.buttonArray = [
-              'Payment',
               'Common Areas',
             ]
-            this.getUser(value)
+            this.getUser()
           }
 
 
@@ -59,7 +58,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  private getUserSuper(route: NavigationEnd): void {
+  private getUserSuper(): void {
     this._adminUserService.getByUsername(this.username).subscribe(
       (user:Partial<UserInterface>) => {
         this.user = {...user, isAdmin: true};
@@ -67,7 +66,7 @@ export class AppComponent implements OnInit{
     )
   }
 
-  private getUser(route: NavigationEnd): void {
+  private getUser(): void {
     this._residentServices.getByUsername(this.username).subscribe(
       (user:Partial<UserInterface>) => {
         this.user = {...user, isAdmin: false};
@@ -79,27 +78,39 @@ export class AppComponent implements OnInit{
     switch (i) {
       case 0:
         if (this.user?.isAdmin) {
-          this._router.navigate(['admin', this.user.username, 'houses']);
+          this._router.navigate(['admin', this.user.username, 'condom'], {
+            state: {...this.user}
+          })
           return;
         }
-        this._router.navigate(['resident', this.user.username, 'payment']);
+        this._router.navigate(['resident', this.user.username, 'payment'], {
+          state: {...this.user}
+        });
         return;
       case 1:
         if (this.user?.isAdmin) {
-          this._router.navigate(['admin', this.user.username, 'careas']);
+          this._router.navigate(['admin', this.user.username, 'careas'], {
+            state: {...this.user}
+          });
           return;
         }
-        this._router.navigate(['resident', this.user.username, 'careas']);
+        this._router.navigate(['resident', this.user.username, 'careas'], {
+          state: {...this.user}
+        });
         return;
       case 2:
         if (this.user?.isAdmin) {
-          this._router.navigate(['admin', this.user.username, 'resident']);
+          this._router.navigate(['admin', this.user.username, 'resident'], {
+            state: {...this.user}
+          });
           return;
         }
         return;
       default:
         if (!this.user.isAdmin) {
-          this._router.navigate(['resident', this.user.username, 'profile']);
+          this._router.navigate(['resident', this.user.username, 'profile'], {
+            state: {...this.user}
+          });
           return;
         }
         return;

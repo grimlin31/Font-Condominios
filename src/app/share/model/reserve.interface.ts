@@ -1,7 +1,10 @@
 export interface ReserveInterface {
-  _id: String
-  houseId: String,
-  periodId: String,
-  transactionId: String
+  _id: string
+  houseId: string,
+  periodId: string,
+  transactionId: string
   createdAt: Date
+
+  // local
+  position?: number
 }
